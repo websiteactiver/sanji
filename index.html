@@ -97,7 +97,9 @@ nav a:hover{opacity:1}nav a:hover::after{width:100%}
 .tab:hover{border-color:var(--gold)}
 .tab.active{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 8px 18px rgba(214,40,40,.3)}
 .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:30px}
-.dish{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:flex;justify-content:space-between;gap:14px;transition:.3s;position:relative;overflow:hidden}
+.dish{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;align-items:center;gap:14px;transition:.3s;position:relative;overflow:hidden}
+.dish .thumb{width:78px;height:78px;flex:0 0 78px;border-radius:14px;object-fit:cover;box-shadow:0 8px 18px rgba(0,0,0,.12)}
+.dish .mid{flex:1;min-width:0}
 .dish::before{content:'';position:absolute;top:0;right:0;width:4px;height:100%;background:linear-gradient(var(--gold),var(--red));transform:scaleY(0);transform-origin:top;transition:.3s}
 .dish:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.1);border-color:transparent}
 .dish:hover::before{transform:scaleY(1)}
@@ -158,6 +160,47 @@ footer{background:#120d09;color:#fff;padding:60px 0 24px}
 @media(max-width:900px){nav ul,.nav-cta{display:none}.burger{display:flex}.about-grid,.info-grid{grid-template-columns:1fr;gap:40px}.about-img .float{right:auto;left:0}.rev-grid{grid-template-columns:1fr}.gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}.g-big{grid-column:span 2;grid-row:span 1}.foot-grid{grid-template-columns:1fr}
 nav.open ul{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(26,20,16,.98);padding:20px;gap:16px}}
 @media(max-width:560px){.sec-pad{padding:60px 0}.hero-stats{gap:18px}.menu-grid{grid-template-columns:1fr}}
+.wa-fab{position:fixed;bottom:26px;left:26px;z-index:950;width:62px;height:62px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.5);transition:.3s;animation:wapulse 2.2s infinite}
+.wa-fab svg{width:34px;height:34px;fill:#fff}
+.wa-fab:hover{transform:scale(1.1) translateY(-3px)}
+.wa-fab .wtip{position:absolute;left:74px;background:#1a1410;color:#fff;padding:9px 16px;border-radius:50px;font-weight:700;font-size:.9rem;white-space:nowrap;opacity:0;transform:translateX(-10px);pointer-events:none;transition:.3s;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.wa-fab:hover .wtip{opacity:1;transform:translateX(0)}
+@keyframes wapulse{0%{box-shadow:0 10px 30px rgba(37,211,102,.5),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 10px 30px rgba(37,211,102,.5),0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 10px 30px rgba(37,211,102,.5),0 0 0 0 rgba(37,211,102,0)}}
+.socials a.wa:hover{background:#25d366}
+/* price finder */
+.price-finder{background:linear-gradient(135deg,var(--dark),var(--dark2));border-radius:24px;padding:28px;margin:34px 0 6px;color:#fff;box-shadow:0 20px 50px rgba(0,0,0,.2);position:relative;z-index:5}
+.pf-head{display:flex;align-items:center;gap:14px}
+.pf-head .pic{width:50px;height:50px;flex:0 0 50px;border-radius:14px;background:linear-gradient(135deg,var(--gold-l),var(--gold));display:grid;place-items:center;font-size:1.5rem}
+.pf-head h3{font-size:1.35rem;font-weight:900;color:var(--gold-l);line-height:1.2}
+.pf-head p{color:#d8ccc0;font-size:.88rem}
+.pf-input{position:relative;margin-top:16px}
+.pf-input input{width:100%;padding:16px 56px 16px 20px;border:2px solid rgba(255,255,255,.15);border-radius:50px;font-family:inherit;font-size:1.05rem;background:rgba(255,255,255,.08);color:#fff;transition:.3s}
+.pf-input input::placeholder{color:#b5a99d}
+.pf-input input:focus{outline:0;border-color:var(--gold);background:rgba(255,255,255,.12)}
+.pf-input .pfi{position:absolute;left:20px;top:50%;transform:translateY(-50%);font-size:1.2rem}
+.pf-sug{list-style:none;margin:12px 0 0;padding:0;max-height:260px;overflow:auto;display:none}
+.pf-sug.show{display:block}
+.pf-sug li{padding:12px 16px;border-radius:12px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;transition:.2s}
+.pf-sug li:hover{background:rgba(255,255,255,.1)}
+.pf-sug li .snm{font-weight:700}
+.pf-sug li .sdc{color:#b5a99d;font-size:.78rem}
+.pf-sug li .spr{color:var(--gold-l);font-weight:900;font-family:'Cairo';white-space:nowrap;font-size:.95rem}
+.pf-sug li.pf-none{cursor:default;color:#b5a99d;justify-content:center}
+.pf-sug li.pf-none:hover{background:none}
+.pf-result{margin-top:16px;display:none}
+.pf-result.show{display:block;animation:pfin .4s}
+@keyframes pfin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pf-card{background:rgba(255,255,255,.07);border:1px solid rgba(246,166,9,.3);border-radius:18px;padding:22px}
+.pf-card .rtop{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.pf-card .rtop img{width:66px;height:66px;flex:0 0 66px;border-radius:14px;object-fit:cover}
+.pf-card .rtop b{font-size:1.25rem;font-weight:900;display:block;line-height:1.2}
+.pf-card .rtop span{color:#b5a99d;font-size:.88rem}
+.pf-prices{display:flex;flex-wrap:wrap;gap:12px}
+.pf-price{flex:1;min-width:110px;background:linear-gradient(135deg,var(--red),var(--red-d));border-radius:14px;padding:14px 10px;text-align:center}
+.pf-price .plbl{font-size:.8rem;color:#ffd9d9;margin-bottom:5px}
+.pf-price .pval{font-family:'Cairo';font-size:1.7rem;font-weight:900;color:#fff;line-height:1}
+.pf-price .pval small{font-size:.85rem;font-weight:700}
+@media(max-width:560px){.wa-fab{width:56px;height:56px;bottom:18px;left:18px}.wa-fab .wtip{display:none}}
 </style>
 </head>
 <body>
@@ -238,8 +281,23 @@ nav.open ul{display:flex;position:absolute;top:100%;left:0;right:0;flex-directio
   <div class="wrap">
     <div class="center">
       <span class="eyebrow">لائحة الطعام</span>
-      <h2 class="sec-title">شنو غادي <span>تشتاتيوا</span> اليوم؟</h2>
+      <h2 class="sec-title">شنو غادي <span>تشتهيو</span> اليوم؟</h2>
       <p class="sec-sub">أكثر من 40 طبق و صنف متنوع. قلب على اللي بغيتي ولا فلتر حسب النوع.</p>
+    </div>
+    <div class="price-finder reveal">
+      <div class="pf-head">
+        <span class="pic">💰</span>
+        <div>
+          <h3>شحال تمن الطبق؟</h3>
+          <p>كتب سمية الطبق وعطيك التمن ديالو بالدرهم المغربي فالحين.</p>
+        </div>
+      </div>
+      <div class="pf-input">
+        <span class="pfi">🔍</span>
+        <input id="pfq" type="text" autocomplete="off" placeholder="مثلا: طاكوس بالدجاج، بيتزا رويال، تشيز برجر...">
+      </div>
+      <ul class="pf-sug" id="pfsug"></ul>
+      <div class="pf-result" id="pfres"></div>
     </div>
     <div class="menu-tools">
       <div class="search"><span class="si">🔍</span><input id="q" type="text" placeholder="قلب على طبق... (مثلا طاكوس، بيتزا)"></div>
@@ -313,8 +371,9 @@ nav.open ul{display:flex;position:absolute;top:100%;left:0;right:0;flex-directio
         <a href="#home" class="brand" style="font-size:1.6rem"><span class="mark">🍔</span> Sanji<small>Food</small></a>
         <p style="opacity:.75;margin-top:16px;max-width:360px">أحسن الوجبات السريعة فالعرائش. طاكوس، بيتزا، برجر و بزاف ديال اللذة.</p>
         <div class="socials">
-          <a href="#" aria-label="Facebook">📘</a>
-          <a href="#" aria-label="Instagram">📷</a>
+          <a href="https://www.facebook.com/search/top?q=Sanji%20Food%20Larache" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+          <a href="https://www.instagram.com/sanji_food_larache/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a class="wa" href="https://wa.me/212704357142" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
           <a href="tel:0704357142" aria-label="Phone">📞</a>
         </div>
       </div>
@@ -325,13 +384,21 @@ nav.open ul{display:flex;position:absolute;top:100%;left:0;right:0;flex-directio
       <div>
         <h4>الاتصال</h4>
         <a href="tel:0704357142">📞 07 04 35 71 42</a>
+        <a href="https://wa.me/212704357142" target="_blank" rel="noopener">💬 واتساب: 07 04 35 71 42</a>
         <a href="https://maps.google.com/?q=5RPW%2BXQ4+Larache" target="_blank" rel="noopener">📍 5RPW+XQ4، العرائش</a>
         <a>🕐 كيحل 1:30 زوالا</a>
+        <a href="https://www.facebook.com/search/top?q=Sanji%20Food%20Larache" target="_blank" rel="noopener">📘 Sanji Food Larache</a>
+        <a href="https://www.instagram.com/sanji_food_larache/" target="_blank" rel="noopener">📷 @Sanji_Food_Larache</a>
       </div>
     </div>
     <div class="foot-bot">© 2026 Sanji Food — العرائش. جميع الحقوق محفوظة.</div>
   </div>
 </footer>
+
+<a class="wa-fab" href="https://wa.me/212704357142?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20Sanji%20Food" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <span class="wtip">تواصل معانا فواتساب 👇</span>
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.689-.967zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
 <script>
 const CATS=[['all','الكل','🍴'],['pizza','بيتزا','🍕'],['tacos','طاكوس','🌯'],['burger','برجر','🍔'],['sandwich','ساندويتش','🥪'],['panini','بانيني','🥖'],['pasticcio','باستيشيو','🍝'],['tapas','طاباس','🍟'],['burrito','بوريتو','🌮'],['boissons','مشروبات وحلويات','🥤']];
 const D=[
@@ -403,16 +470,30 @@ const D=[
 ['Hala','حلا','20','boissons','درهم'],
 ['Tiramisu','تيراميسو','20','boissons','درهم']];
 const tabsEl=document.getElementById('tabs'),grid=document.getElementById('grid'),nores=document.getElementById('nores'),qEl=document.getElementById('q');
+const IMG={pizza:'assets/cat_pizza.png',tacos:'assets/cat_tacos.png',burger:'assets/cat_burger.png',sandwich:'assets/cat_sandwich.png',panini:'assets/cat_panini.png',pasticcio:'assets/cat_pasticcio.png',tapas:'assets/cat_tapas.png',burrito:'assets/cat_burrito.png',boissons:'assets/cat_boissons.png'};
 let cur='all';
 CATS.forEach(c=>{const b=document.createElement('button');b.className='tab'+(c[0]==='all'?' active':'');b.textContent=c[2]+' '+c[1];b.dataset.c=c[0];b.onclick=()=>{cur=c[0];document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));b.classList.add('active');render()};tabsEl.appendChild(b)});
 function esc(s){return s.replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
 function render(){const q=qEl.value.trim().toLowerCase();grid.innerHTML='';let n=0;
  D.forEach(d=>{const[nm,dc,pr,cat,lb]=d;if(cur!=='all'&&cat!==cur)return;if(q&&!(nm.toLowerCase().includes(q)||dc.toLowerCase().includes(q)))return;n++;
  const el=document.createElement('div');el.className='dish';
- el.innerHTML='<div><div class="nm">'+esc(nm)+'</div><div class="dc">'+esc(dc)+'</div></div><div class="pr">'+esc(pr)+' <small>'+esc(lb)+'</small></div>';
+ el.innerHTML='<img class="thumb" loading="lazy" src="'+IMG[cat]+'" alt="'+esc(nm)+'"><div class="mid"><div class="nm">'+esc(nm)+'</div><div class="dc">'+esc(dc)+'</div></div><div class="pr">'+esc(pr)+' <small>'+esc(lb)+'</small></div>';
  grid.appendChild(el)});
  nores.style.display=n?'none':'block'}
 qEl.addEventListener('input',render);render();
+// price finder
+const pfInput=document.getElementById('pfq'),pfSug=document.getElementById('pfsug'),pfRes=document.getElementById('pfres');
+const LBMAP={'ص':'صغير','م':'متوسط','ك':'كبير','عادي':'عادي','كبير':'كبير','عائلي':'عائلي','للقطعة':'للقطعة','درهم':'التمن'};
+function priceParts(pr,lb){const vals=pr.split('·'),lbs=lb.split('·');return vals.map((v,i)=>({val:v,lbl:LBMAP[lbs[i]]||lbs[i]||'التمن'}))}
+function pfShow(d){const[nm,dc,pr,cat,lb]=d;const parts=priceParts(pr,lb);let ph='';parts.forEach(p=>{ph+='<div class="pf-price"><div class="plbl">'+esc(p.lbl)+'</div><div class="pval">'+esc(p.val)+' <small>درهم</small></div></div>'});pfRes.innerHTML='<div class="pf-card"><div class="rtop"><img src="'+IMG[cat]+'" alt="'+esc(dc)+'"><div><b>'+esc(dc)+'</b><span>'+esc(nm)+'</span></div></div><div class="pf-prices">'+ph+'</div></div>';pfRes.classList.add('show');pfSug.classList.remove('show')}
+function pfRender(){const q=pfInput.value.trim().toLowerCase();pfSug.innerHTML='';pfRes.classList.remove('show');if(!q){pfSug.classList.remove('show');return}
+ const matches=D.filter(d=>d[0].toLowerCase().includes(q)||d[1].toLowerCase().includes(q)).slice(0,7);
+ if(!matches.length){pfSug.innerHTML='<li class="pf-none">😕 مالقينا حتى طبق بهاد الاسم، جرب كلمة أخرى.</li>';pfSug.classList.add('show');return}
+ matches.forEach(d=>{const li=document.createElement('li');const prTxt=d[2].split('·').join(' / ')+' درهم';li.innerHTML='<div><div class="snm">'+esc(d[1])+'</div><div class="sdc">'+esc(d[0])+'</div></div><div class="spr">'+esc(prTxt)+'</div>';li.onclick=()=>{pfInput.value=d[1];pfShow(d)};pfSug.appendChild(li)});
+ pfSug.classList.add('show')}
+pfInput.addEventListener('input',pfRender);
+pfInput.addEventListener('focus',pfRender);
+document.addEventListener('click',e=>{if(!e.target.closest('.price-finder'))pfSug.classList.remove('show')});
 // loader
 window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),900));
 setTimeout(()=>document.getElementById('loader').classList.add('hide'),2600);

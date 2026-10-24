@@ -10,8 +10,8 @@
 <style>
 :root{--red:#d62828;--red-d:#9d1313;--gold:#f6a609;--gold-l:#ffc94d;--dark:#1a1410;--dark2:#2a211a;--cream:#fff8ef;--muted:#7a6f66;--line:#ece2d6}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Tajawal','Cairo',sans-serif;color:var(--dark);background:var(--cream);overflow-x:hidden;line-height:1.7}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Tajawal','Cairo',sans-serif;color:var(--dark);background:var(--cream);overflow-x:hidden;max-width:100%;line-height:1.7}
 h1,h2,h3,.brand{font-family:'Cairo','Tajawal',sans-serif}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
@@ -70,7 +70,7 @@ nav a:hover{opacity:1}nav a:hover::after{width:100%}
 .badges{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
 .badges span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:7px 16px;border-radius:50px;font-size:.88rem;font-weight:600;display:inline-flex;gap:7px;align-items:center}
 /* decorative strip */
-.strip{background:var(--dark);color:#fff;padding:0}
+.strip{background:var(--dark);color:#fff;padding:0;overflow:hidden}
 .strip .run{display:flex;gap:50px;padding:20px 0;white-space:nowrap;animation:marq 24s linear infinite;font-family:'Cairo';font-weight:800;font-size:1.3rem;color:var(--gold-l)}
 .strip .run span{display:inline-flex;gap:50px;align-items:center}
 .strip .dot{color:var(--red)}

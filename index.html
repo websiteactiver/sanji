@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanji Food — مطعم الوجبات السريعة | العرائش</title>
+<meta name="description" content="Sanji Food — مطعم وجبات سريعة فالعرائش: بيتزا، طاكوس، برجر، بانيني وأكثر. توصيل • أخذ • جلوس.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--red:#d62828;--red-d:#9d1313;--gold:#f6a609;--gold-l:#ffc94d;--dark:#1a1410;--dark2:#2a211a;--cream:#fff8ef;--muted:#7a6f66;--line:#ece2d6}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal','Cairo',sans-serif;color:var(--dark);background:var(--cream);overflow-x:hidden;line-height:1.7}
+h1,h2,h3,.brand{font-family:'Cairo','Tajawal',sans-serif}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.wrap{width:min(1180px,92%);margin:0 auto}
+section{position:relative}
+.sec-pad{padding:90px 0}
+.eyebrow{display:inline-block;color:var(--red);font-weight:800;letter-spacing:2px;font-size:.82rem;text-transform:uppercase;margin-bottom:10px;position:relative}
+.sec-title{font-size:clamp(1.9rem,4vw,3rem);font-weight:900;line-height:1.2;margin-bottom:14px}
+.sec-title span{color:var(--red)}
+.sec-sub{color:var(--muted);max-width:620px;font-size:1.05rem}
+.center{text-align:center}
+.center .sec-sub{margin:0 auto}
+/* loader */
+#loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .6s,visibility .6s}
+#loader.hide{opacity:0;visibility:hidden}
+.ldr-logo{font-family:'Cairo';font-weight:900;font-size:2.4rem;color:var(--gold-l);letter-spacing:1px}
+.ldr-logo b{color:var(--red)}
+.ldr-bar{width:180px;height:5px;background:rgba(255,255,255,.15);border-radius:10px;overflow:hidden}
+.ldr-bar i{display:block;height:100%;width:40%;background:linear-gradient(90deg,var(--gold),var(--red));border-radius:10px;animation:load 1.1s infinite}
+@keyframes load{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:900;transition:.35s}
+header .bar{display:flex;align-items:center;justify-content:space-between;padding:18px 0;transition:.35s}
+header.scrolled{background:rgba(26,20,16,.92);backdrop-filter:blur(10px);box-shadow:0 8px 30px rgba(0,0,0,.25)}
+header.scrolled .bar{padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:900;font-size:1.5rem}
+.brand .mark{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--red));display:grid;place-items:center;font-size:1.4rem;box-shadow:0 6px 18px rgba(214,40,40,.4)}
+.brand small{color:var(--gold-l)}
+nav ul{display:flex;gap:30px;list-style:none}
+nav a{color:#fff;font-weight:600;font-size:1rem;position:relative;opacity:.9}
+nav a::after{content:'';position:absolute;bottom:-6px;right:0;width:0;height:2px;background:var(--gold);transition:.3s}
+nav a:hover{opacity:1}nav a:hover::after{width:100%}
+.nav-cta{background:var(--red);color:#fff;padding:11px 22px;border-radius:50px;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 20px rgba(214,40,40,.4);transition:.3s}
+.nav-cta:hover{transform:translateY(-2px);background:var(--gold);color:var(--dark)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0}
+.burger span{width:26px;height:3px;background:#fff;border-radius:3px;transition:.3s}
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,20,16,.93) 0%,rgba(26,20,16,.75) 45%,rgba(26,20,16,.35) 100%)}
+.hero-inner{max-width:680px;padding:120px 0 80px}
+.hero .tag{display:inline-flex;gap:8px;align-items:center;background:rgba(246,166,9,.15);border:1px solid rgba(246,166,9,.4);color:var(--gold-l);padding:8px 18px;border-radius:50px;font-weight:700;font-size:.9rem;margin-bottom:22px}
+.hero h1{font-size:clamp(2.6rem,6.5vw,4.6rem);font-weight:900;line-height:1.08;margin-bottom:20px}
+.hero h1 span{color:var(--gold-l)}
+.hero p.lead{font-size:1.2rem;opacity:.92;margin-bottom:28px;max-width:560px}
+.hero-stats{display:flex;gap:28px;margin:28px 0 34px;flex-wrap:wrap}
+.hstat b{display:block;font-family:'Cairo';font-size:1.8rem;font-weight:900;color:var(--gold-l)}
+.hstat small{opacity:.8}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:50px;font-weight:800;font-size:1.05rem;cursor:pointer;transition:.3s;border:0}
+.btn-primary{background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;box-shadow:0 12px 30px rgba(214,40,40,.45)}
+.btn-primary:hover{transform:translateY(-3px)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:2px solid rgba(255,255,255,.4)}
+.btn-ghost:hover{background:#fff;color:var(--dark)}
+.badges{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.badges span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:7px 16px;border-radius:50px;font-size:.88rem;font-weight:600;display:inline-flex;gap:7px;align-items:center}
+/* decorative strip */
+.strip{background:var(--dark);color:#fff;padding:0}
+.strip .run{display:flex;gap:50px;padding:20px 0;white-space:nowrap;animation:marq 24s linear infinite;font-family:'Cairo';font-weight:800;font-size:1.3rem;color:var(--gold-l)}
+.strip .run span{display:inline-flex;gap:50px;align-items:center}
+.strip .dot{color:var(--red)}
+@keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{position:relative}
+.about-img img{border-radius:24px;box-shadow:0 30px 60px rgba(0,0,0,.18)}
+.about-img .float{position:absolute;bottom:-26px;right:-26px;background:var(--red);color:#fff;padding:22px 26px;border-radius:20px;box-shadow:0 20px 40px rgba(214,40,40,.4)}
+.about-img .float b{font-family:'Cairo';font-size:2rem;display:block;line-height:1}
+.about-feats{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.feat{display:flex;gap:14px;align-items:flex-start}
+.feat .ic{width:46px;height:46px;flex:0 0 46px;border-radius:14px;background:linear-gradient(135deg,var(--gold-l),var(--gold));display:grid;place-items:center;font-size:1.3rem}
+.feat b{display:block;font-weight:800}
+.feat small{color:var(--muted)}
+/* menu */
+.menu-tools{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin:34px 0 10px}
+.search{flex:1;min-width:240px;position:relative}
+.search input{width:100%;padding:14px 50px 14px 20px;border:2px solid var(--line);border-radius:50px;font-family:inherit;font-size:1rem;background:#fff;transition:.3s}
+.search input:focus{outline:0;border-color:var(--red)}
+.search .si{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1.1rem}
+.tabs{display:flex;gap:10px;flex-wrap:wrap}
+.tab{padding:10px 20px;border-radius:50px;border:2px solid var(--line);background:#fff;font-family:inherit;font-weight:700;cursor:pointer;transition:.25s;font-size:.95rem;color:var(--dark)}
+.tab:hover{border-color:var(--gold)}
+.tab.active{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 8px 18px rgba(214,40,40,.3)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:30px}
+.dish{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:flex;justify-content:space-between;gap:14px;transition:.3s;position:relative;overflow:hidden}
+.dish::before{content:'';position:absolute;top:0;right:0;width:4px;height:100%;background:linear-gradient(var(--gold),var(--red));transform:scaleY(0);transform-origin:top;transition:.3s}
+.dish:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.1);border-color:transparent}
+.dish:hover::before{transform:scaleY(1)}
+.dish .nm{font-weight:800;font-size:1.08rem}
+.dish .dc{color:var(--muted);font-size:.85rem;margin-top:3px}
+.dish .pr{text-align:left;font-family:'Cairo';font-weight:900;color:var(--red);white-space:nowrap;font-size:1.05rem}
+.dish .pr small{display:block;color:var(--muted);font-weight:600;font-size:.72rem}
+.nores{text-align:center;color:var(--muted);padding:40px;grid-column:1/-1;font-size:1.1rem;display:none}
+/* gallery */
+.gallery{background:var(--dark2);color:#fff}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px;margin-top:40px}
+.gal-grid figure{overflow:hidden;border-radius:18px;position:relative;cursor:pointer}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.gal-grid figure:hover img{transform:scale(1.1)}
+.gal-grid figure::after{content:attr(data-cap);position:absolute;inset:auto 0 0 0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,.8));font-weight:700;opacity:0;transform:translateY(10px);transition:.3s}
+.gal-grid figure:hover::after{opacity:1;transform:translateY(0)}
+.g-big{grid-column:span 2;grid-row:span 2}
+.g-wide{grid-column:span 2}
+/* reviews */
+.rev-head{display:flex;flex-wrap:wrap;gap:40px;align-items:center;justify-content:center;margin-bottom:46px}
+.rev-score{text-align:center}
+.rev-score b{font-family:'Cairo';font-size:4.2rem;font-weight:900;color:var(--red);line-height:1}
+.stars{color:var(--gold);font-size:1.3rem;letter-spacing:2px}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;transition:.3s}
+.rev:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(0,0,0,.1)}
+.rev .who{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.rev .av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--red));color:#fff;display:grid;place-items:center;font-weight:900;font-family:'Cairo';font-size:1.2rem}
+.rev .who b{display:block}
+.rev .who small{color:var(--muted)}
+.rev .st{color:var(--gold);margin-bottom:8px}
+.rev p{color:#4a4038}
+/* info */
+.info{background:var(--dark);color:#fff}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:stretch}
+.info-list{display:flex;flex-direction:column;gap:22px}
+.info-item{display:flex;gap:16px;align-items:flex-start;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.1)}
+.info-item .ic{width:50px;height:50px;flex:0 0 50px;border-radius:14px;background:rgba(246,166,9,.15);border:1px solid rgba(246,166,9,.35);display:grid;place-items:center;font-size:1.3rem}
+.info-item b{display:block;color:var(--gold-l);margin-bottom:2px}
+.info-item a{opacity:.9}
+.info-item a:hover{color:var(--gold-l)}
+.map-box{border-radius:20px;overflow:hidden;min-height:340px;border:1px solid rgba(255,255,255,.15)}
+.map-box iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.2)}
+.hours-now{display:inline-flex;gap:8px;align-items:center;background:rgba(214,40,40,.2);border:1px solid rgba(214,40,40,.5);color:#ffb3b3;padding:7px 16px;border-radius:50px;font-weight:700;font-size:.9rem;margin-top:6px}
+/* footer */
+footer{background:#120d09;color:#fff;padding:60px 0 24px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot-grid h4{font-family:'Cairo';color:var(--gold-l);margin-bottom:16px;font-size:1.1rem}
+.foot-grid a{display:block;opacity:.8;margin-bottom:10px;transition:.2s}
+.foot-grid a:hover{opacity:1;color:var(--gold-l);padding-right:5px}
+.socials{display:flex;gap:12px;margin-top:16px}
+.socials a{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.08);display:grid;place-items:center;font-size:1.1rem;margin:0;transition:.3s}
+.socials a:hover{background:var(--red);transform:translateY(-3px)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-align:center;opacity:.6;font-size:.9rem}
+.reveal{opacity:0;transform:translateY(40px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+/* responsive */
+@media(max-width:900px){nav ul,.nav-cta{display:none}.burger{display:flex}.about-grid,.info-grid{grid-template-columns:1fr;gap:40px}.about-img .float{right:auto;left:0}.rev-grid{grid-template-columns:1fr}.gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}.g-big{grid-column:span 2;grid-row:span 1}.foot-grid{grid-template-columns:1fr}
+nav.open ul{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(26,20,16,.98);padding:20px;gap:16px}}
+@media(max-width:560px){.sec-pad{padding:60px 0}.hero-stats{gap:18px}.menu-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="loader">
+  <div class="ldr-logo">Sanji<b>Food</b></div>
+  <div class="ldr-bar"><i></i></div>
+</div>
+
+<header id="hdr">
+  <div class="wrap bar">
+    <a href="#home" class="brand"><span class="mark">🍔</span> Sanji<small>Food</small></a>
+    <nav id="nav">
+      <ul>
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#about">عنا</a></li>
+        <li><a href="#menu">المنيو</a></li>
+        <li><a href="#gallery">الصور</a></li>
+        <li><a href="#reviews">الآراء</a></li>
+        <li><a href="#contact">اتصل بنا</a></li>
+      </ul>
+    </nav>
+    <a href="tel:0704357142" class="nav-cta">📞 اطلب دابا</a>
+    <button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-bg"><img src="assets/hero.png" alt="أطباق Sanji Food"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="tag">📍 فالعرائش • Fast Food</span>
+      <h1>ذوق اللذة مع <span>Sanji Food</span></h1>
+      <p class="lead">أحسن الوجبات السريعة فالعرائش — طاكوس، بيتزا، برجر وبانيني محضرين بمكونات طازجة ونكهة لا تُنسى.</p>
+      <div class="hero-stats">
+        <div class="hstat"><b>3.6★</b><small>116 تقييم</small></div>
+        <div class="hstat"><b>50–100</b><small>درهم / شخص</small></div>
+        <div class="hstat"><b>+40</b><small>طبق و صنف</small></div>
+      </div>
+      <div class="hero-cta">
+        <a href="tel:0704357142" class="btn btn-primary">📞 07 04 35 71 42</a>
+        <a href="#menu" class="btn btn-ghost">🍽️ شوف المنيو</a>
+      </div>
+      <div class="badges">
+        <span>🪑 جلوس داخل المطعم</span>
+        <span>🛍️ أخذ معاك</span>
+        <span>🛵 توصيل للمنزل</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="run">
+    <span>🍕 بيتزا <i class="dot">•</i> 🌯 طاكوس <i class="dot">•</i> 🍔 برجر <i class="dot">•</i> 🥪 بانيني <i class="dot">•</i> 🍟 بطاطا بالجبن <i class="dot">•</i> 🌮 بوريتو <i class="dot">•</i></span>
+    <span>🍕 بيتزا <i class="dot">•</i> 🌯 طاكوس <i class="dot">•</i> 🍔 برجر <i class="dot">•</i> 🥪 بانيني <i class="dot">•</i> 🍟 بطاطا بالجبن <i class="dot">•</i> 🌮 بوريتو <i class="dot">•</i></span>
+  </div>
+</div>
+<section class="sec-pad" id="about">
+  <div class="wrap about-grid">
+    <div class="about-img reveal">
+      <img src="assets/interior.png" alt="أجواء مطعم Sanji Food">
+      <div class="float"><b>3.6★</b><span>116 تقييم</span></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">مرحبا بيكم</span>
+      <h2 class="sec-title">أكثر من <span>وجبة سريعة</span></h2>
+      <p class="sec-sub">Sanji Food هو وجهتك المفضلة فالعرائش باش دوق أطيب الوجبات السريعة. كنحضرو طاكوس، بيتزا، برجر وبانيني بمكونات طازجة وجودة عالية، فجو دافئ وخدمة بابتسامة.</p>
+      <div class="about-feats">
+        <div class="feat"><span class="ic">🔥</span><div><b>طازج ومشوي</b><small>كلشي كيتحضر فالحين</small></div></div>
+        <div class="feat"><span class="ic">⚡</span><div><b>خدمة سريعة</b><small>طلبك ف دقايق</small></div></div>
+        <div class="feat"><span class="ic">🛵</span><div><b>توصيل للباب</b><small>حتى لدارك</small></div></div>
+        <div class="feat"><span class="ic">💰</span><div><b>تمن مناسب</b><small>50–100 درهم</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sec-pad" id="menu" style="background:linear-gradient(180deg,#fff8ef,#fff3e3)">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">لائحة الطعام</span>
+      <h2 class="sec-title">شنو غادي <span>تشتاتيوا</span> اليوم؟</h2>
+      <p class="sec-sub">أكثر من 40 طبق و صنف متنوع. قلب على اللي بغيتي ولا فلتر حسب النوع.</p>
+    </div>
+    <div class="menu-tools">
+      <div class="search"><span class="si">🔍</span><input id="q" type="text" placeholder="قلب على طبق... (مثلا طاكوس، بيتزا)"></div>
+      <div class="tabs" id="tabs"></div>
+    </div>
+    <div class="menu-grid" id="grid"></div>
+    <div class="nores" id="nores">😕 مالقينا حتى طبق بهاد الاسم، جرب كلمة أخرى.</div>
+  </div>
+</section>
+<section class="sec-pad gallery" id="gallery">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow" style="color:var(--gold-l)">معرض الصور</span>
+      <h2 class="sec-title" style="color:#fff">شوف <span>بعينيك</span></h2>
+      <p class="sec-sub" style="color:#d8ccc0">شوية ديال أطباقنا وأجواء المطعم.</p>
+    </div>
+    <div class="gal-grid reveal">
+      <figure class="g-big" data-cap="🌯 طاكوس مشوي بالبطاطا"><img src="assets/tacos.png" alt="طاكوس مشوي"></figure>
+      <figure data-cap="🧀 طاكوس غراتيني"><img src="assets/gratine.png" alt="طاكوس غراتيني"></figure>
+      <figure data-cap="🏪 واجهة Sanji Food"><img src="assets/storefront.png" alt="واجهة المطعم"></figure>
+      <figure class="g-wide" data-cap="🔥 أجواء داخل المطعم"><img src="assets/interior.png" alt="داخل المطعم"></figure>
+    </div>
+  </div>
+</section>
+<section class="sec-pad" id="reviews">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow">آراء الزبائن</span>
+      <h2 class="sec-title">شنو كيقولو <span>الناس</span></h2></div>
+    <div class="rev-head">
+      <div class="rev-score"><b>3.6</b><div class="stars">★★★☆☆</div><small style="color:var(--muted)">من 116 تقييم</small></div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="who"><span class="av">A</span><div><b>Alae Hadad</b><small>قبل 8 شهور</small></div></div>
+        <div class="st">★★★★★</div>
+        <p>صراحة رائع بدون مجاملة 🫶🏻❤️</p>
+      </div>
+      <div class="rev reveal">
+        <div class="who"><span class="av">P</span><div><b>Pf. Abdelilah</b><small>قبل عام • 9 مراجعات</small></div></div>
+        <div class="st">★★★☆☆</div>
+        <p>الخدمة والجودة زينة، ولكن ننصح بالطلب مباشرة من المحل باش يوصلك الطلب بالضبط.</p>
+      </div>
+      <div class="rev reveal">
+        <div class="who"><span class="av">M</span><div><b>mowbowx</b><small>قبل شهرين</small></div></div>
+        <div class="st">★☆☆☆☆</div>
+        <p>تجربة ما عجباتنيش، كنتمنى تتحسن الجودة وسرعة التوصيل فالمستقبل.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sec-pad info" id="contact">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow" style="color:var(--gold-l)">اتصل بنا</span>
+      <h2 class="sec-title" style="color:#fff">فين <span>تلقانا</span>؟</h2></div>
+    <div class="info-grid" style="margin-top:40px">
+      <div class="info-list">
+        <div class="info-item"><span class="ic">📍</span><div><b>العنوان</b><a href="https://maps.google.com/?q=5RPW%2BXQ4+Larache" target="_blank" rel="noopener">5RPW+XQ4، العرائش</a></div></div>
+        <div class="info-item"><span class="ic">📞</span><div><b>الهاتف</b><a href="tel:0704357142">07 04 35 71 42</a></div></div>
+        <div class="info-item"><span class="ic">🕐</span><div><b>أوقات العمل</b><a>كل يوم • تُفتح الساعة 1:30 زوالا</a><div class="hours-now">🔴 مغلوق دابا • كيحل 1:30 PM</div></div></div>
+        <div class="info-item" style="border:0"><span class="ic">🍽️</span><div><b>الخدمات</b><a>جلوس داخل المطعم • أخذ • توصيل</a></div></div>
+      </div>
+      <div class="map-box"><iframe title="Sanji Food Larache" src="https://maps.google.com/maps?q=5RPW%2BXQ4%20Larache&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#home" class="brand" style="font-size:1.6rem"><span class="mark">🍔</span> Sanji<small>Food</small></a>
+        <p style="opacity:.75;margin-top:16px;max-width:360px">أحسن الوجبات السريعة فالعرائش. طاكوس، بيتزا، برجر و بزاف ديال اللذة.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="tel:0704357142" aria-label="Phone">📞</a>
+        </div>
+      </div>
+      <div>
+        <h4>تنقل سريع</h4>
+        <a href="#about">عنا</a><a href="#menu">المنيو</a><a href="#gallery">الصور</a><a href="#reviews">الآراء</a>
+      </div>
+      <div>
+        <h4>الاتصال</h4>
+        <a href="tel:0704357142">📞 07 04 35 71 42</a>
+        <a href="https://maps.google.com/?q=5RPW%2BXQ4+Larache" target="_blank" rel="noopener">📍 5RPW+XQ4، العرائش</a>
+        <a>🕐 كيحل 1:30 زوالا</a>
+      </div>
+    </div>
+    <div class="foot-bot">© 2026 Sanji Food — العرائش. جميع الحقوق محفوظة.</div>
+  </div>
+</footer>
+<script>
+const CATS=[['all','الكل','🍴'],['pizza','بيتزا','🍕'],['tacos','طاكوس','🌯'],['burger','برجر','🍔'],['sandwich','ساندويتش','🥪'],['panini','بانيني','🥖'],['pasticcio','باستيشيو','🍝'],['tapas','طاباس','🍟'],['burrito','بوريتو','🌮'],['boissons','مشروبات وحلويات','🥤']];
+const D=[
+['Poulet','بيتزا بالدجاج','20·35·45','pizza','ص·م·ك'],
+['Viande hachée','بيتزا بالكفتة','20·35·45','pizza','ص·م·ك'],
+['Fruit de mer','بيتزا بفواكه البحر','25·40·55','pizza','ص·م·ك'],
+['Thon','بيتزا بالطون','20·35·45','pizza','ص·م·ك'],
+['Royale','بيتزا رويال','25·40·55','pizza','ص·م·ك'],
+['Margarita','بيتزا مرغريتا','20·30·45','pizza','ص·م·ك'],
+['Végétarienne','بيتزا نباتية','20·30·45','pizza','ص·م·ك'],
+['Quatre saisons','بيتزا 4 فصول','25·40·60','pizza','ص·م·ك'],
+['Hawaii','بيتزا هاواي','25·40·55','pizza','ص·م·ك'],
+['Dinde fumé','بيتزا ديك رومي مدخن','25·40·55','pizza','ص·م·ك'],
+['Hot Dog','بيتزا هوت دوغ','25·40·55','pizza','ص·م·ك'],
+['Papperoni','بيتزا بيبروني','30·45·60','pizza','ص·م·ك'],
+['4 fromages','بيتزا 4 أجبان','30·45·60','pizza','ص·م·ك'],
+['Tacos Poulet','طاكوس بالدجاج','27·37','tacos','عادي·كبير'],
+['Tacos Mixte','طاكوس مكس','30·40','tacos','عادي·كبير'],
+['Tacos Viande hachée','طاكوس بالكفتة','32·40','tacos','عادي·كبير'],
+['Tacos Fruit de mer','طاكوس فواكه البحر','40·50','tacos','عادي·كبير'],
+['Tacos Royale','طاكوس رويال','40·50','tacos','عادي·كبير'],
+['Tacos Nuggets','طاكوس ناغيتس','35·45','tacos','عادي·كبير'],
+['Tacos Cordon bleu','طاكوس كوردون بلو','35·45','tacos','عادي·كبير'],
+['Tacos Dinde fumé','طاكوس ديك رومي مدخن','30·40','tacos','عادي·كبير'],
+['Tacos Saucisse','طاكوس سجق','30·40','tacos','عادي·كبير'],
+['Tacos Exotique','طاكوس إكزوتيك','35·45','tacos','عادي·كبير'],
+['Tortilla','طاكوس تورتيا','18·20','tacos','عادي·كبير'],
+['Super Sanji Burger','البرجر الخاص ديال سانجي','55','burger','درهم'],
+['Cheeseburger','تشيز برجر','25','burger','درهم'],
+['Double cheeseburger','دوبل تشيز برجر','35','burger','درهم'],
+['Big Mac','بيغ ماك','40','burger','درهم'],
+['Double chicken burger','دوبل تشيكن برجر','40','burger','درهم'],
+['Chicken burger','تشيكن برجر','25','burger','درهم'],
+['Egg burger','برجر بالبيض','30','burger','درهم'],
+['Froid','ساندويتش بارد','12','sandwich','درهم'],
+['Tortilla','ساندويتش تورتيا','13','sandwich','درهم'],
+['Omelette','ساندويتش أومليت','12','sandwich','درهم'],
+['Poulet','ساندويتش دجاج','20','sandwich','درهم'],
+['Viande hachée','ساندويتش كفتة','20','sandwich','درهم'],
+['Saucisse','ساندويتش سجق','20','sandwich','درهم'],
+['Fruit de mer','ساندويتش فواكه البحر','25','sandwich','درهم'],
+['Royale','ساندويتش رويال','25','sandwich','درهم'],
+['Crispy','ساندويتش كريسبي','25','sandwich','درهم'],
+['Panini Poulet','بانيني بالدجاج','22','panini','درهم'],
+['Panini Viande hachée','بانيني بالكفتة','22','panini','درهم'],
+['Panini Dinde fumé','بانيني ديك رومي مدخن','25','panini','درهم'],
+['Panini Saucisse','بانيني سجق','25','panini','درهم'],
+['Panini Fruit de mer','بانيني فواكه البحر','27','panini','درهم'],
+['Panini Royale','بانيني رويال','27','panini','درهم'],
+['Pasticcio Poulet','باستيشيو بالدجاج','30','pasticcio','درهم'],
+['Pasticcio Viande hachée','باستيشيو بالكفتة','35','pasticcio','درهم'],
+['Pasticcio Fruit de mer','باستيشيو فواكه البحر','40','pasticcio','درهم'],
+['Pasticcio Royal','باستيشيو رويال','40','pasticcio','درهم'],
+['Pasticcio Dinde fumé','باستيشيو ديك رومي مدخن','30','pasticcio','درهم'],
+['Pasticcio Exotique','باستيشيو إكزوتيك','35','pasticcio','درهم'],
+['Nugget','ناغيت (للقطعة)','4','tapas','للقطعة'],
+['Cordon bleu','كوردون بلو (للقطعة)','10','tapas','للقطعة'],
+['Chicken burger (pièce)','تشيكن برجر (للقطعة)','10','tapas','للقطعة'],
+['Cheese Fries','بطاطا بالجبن','13·23','tapas','ص·ك'],
+['Crispy Box','صندوق كريسبي','40·70·110','tapas','ص·م·عائلي'],
+['New Twistter','بوريتو نيو تويستر','30','burrito','درهم'],
+['Poulet classique','بوريتو دجاج كلاسيك','30','burrito','درهم'],
+['Viande hachée','بوريتو كفتة','35','burrito','درهم'],
+['Dinde fumé','بوريتو ديك رومي مدخن','30','burrito','درهم'],
+['Canette','مشروب غازي علبة','6','boissons','درهم'],
+['Maxi','مشروب ماكسي','8','boissons','درهم'],
+['Eau','ماء','5·10','boissons','ص·ك'],
+['Flan','فلان','6','boissons','درهم'],
+['Hala','حلا','20','boissons','درهم'],
+['Tiramisu','تيراميسو','20','boissons','درهم']];
+const tabsEl=document.getElementById('tabs'),grid=document.getElementById('grid'),nores=document.getElementById('nores'),qEl=document.getElementById('q');
+let cur='all';
+CATS.forEach(c=>{const b=document.createElement('button');b.className='tab'+(c[0]==='all'?' active':'');b.textContent=c[2]+' '+c[1];b.dataset.c=c[0];b.onclick=()=>{cur=c[0];document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));b.classList.add('active');render()};tabsEl.appendChild(b)});
+function esc(s){return s.replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
+function render(){const q=qEl.value.trim().toLowerCase();grid.innerHTML='';let n=0;
+ D.forEach(d=>{const[nm,dc,pr,cat,lb]=d;if(cur!=='all'&&cat!==cur)return;if(q&&!(nm.toLowerCase().includes(q)||dc.toLowerCase().includes(q)))return;n++;
+ const el=document.createElement('div');el.className='dish';
+ el.innerHTML='<div><div class="nm">'+esc(nm)+'</div><div class="dc">'+esc(dc)+'</div></div><div class="pr">'+esc(pr)+' <small>'+esc(lb)+'</small></div>';
+ grid.appendChild(el)});
+ nores.style.display=n?'none':'block'}
+qEl.addEventListener('input',render);render();
+// loader
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),900));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),2600);
+// header scroll
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>60));
+// burger
+const nav=document.getElementById('nav');
+document.getElementById('burger').onclick=()=>nav.classList.toggle('open');
+nav.querySelectorAll('a').forEach(a=>a.onclick=()=>nav.classList.remove('open'));
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>
